@@ -6,3 +6,5 @@ class CompanyViewSet(viewsets.ModelViewSet):
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
 
+    def get_queryset(self):
+        return Company.objects.prefetch_related("users").all()
