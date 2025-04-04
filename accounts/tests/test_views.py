@@ -1,5 +1,4 @@
 import pytest
-from rest_framework.test import APIClient
 from django.urls import reverse
 from accounts.models import User
 
@@ -8,11 +7,11 @@ def test_user_list_view(api_client, user_factory):
     user_factory(username="user1")
     user_factory(username="user2")
 
-    url = reverse("user-list")  # Ім'я вказується DRF router'ом
+    url = reverse("user-list")
     response = api_client.get(url)
 
     assert response.status_code == 200
-    assert len(response.data) == 2  # два створені користувачі
+    assert len(response.data) == 2
 
 
 @pytest.mark.django_db
